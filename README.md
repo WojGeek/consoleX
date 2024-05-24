@@ -20,7 +20,7 @@ Características agregadas:
 
 ####  Activación
 
-    $  bash ~/optimize-ux-console/installer.sh
+    $  bash ~/consoleX/installer.sh
 
 
 
@@ -86,7 +86,7 @@ Características agregadas:
 
 ```
     
-    # source $HOME/optimize-ux-console/main.sh
+    # source $HOME/consoleX/main.sh
 
 
 ```
