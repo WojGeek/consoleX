@@ -15,13 +15,16 @@ Características agregadas:
 
 ####  Instalación 
 
-    $ cd ~/
-    $ git clone https://github.com/WojGeek/optimize-ux-console.git
+```
+    cd ~/
+    git clone https://github.com/WojGeek/optimize-ux-console.git
+```
 
 ####  Activación
 
-    $  bash ~/consoleX/installer.sh
-
+```
+    bash ~/consoleX/installer.sh
+```
 
 
 #### Screenshot del prompt
@@ -33,7 +36,7 @@ Características agregadas:
 
 - Muestra algunos detalles importantes sobre la rama git.
 - Si surge algún código de error con un comando, cambia de color.
-- Acorte la ruta mostrada con puntos suspensivos, si está demasiado metido en un árbol de directorios.
+- Acorta la ruta mostrada con puntos suspensivos, si está demasiado metido en un árbol de directorios.
 - Muestra el entorno de Python actual. 
 - Es fácil de personalizar y ampliar
 
@@ -46,21 +49,21 @@ Características agregadas:
 - Derivados de Red Hat/Fedora/OpenSuse:
 
 ```
-     $ sudo dnf install -y powerline powerline-fonts
+     sudo dnf install -y powerline powerline-fonts
 
 ```
 
 - Derivados de Debian/Ubuntu:
 
 ```
-     $ sudo apt install -y  powerline fonts-powerline 
+     sudo apt install -y  powerline fonts-powerline 
      
 ```
 
 - Instalación utilizando pip:
 
 ```
-    $ pip install powerline-shell
+    pip install powerline-shell
 
 ```
 
@@ -69,9 +72,9 @@ Características agregadas:
 ![Powerline-prompt](https://raw.github.com/b-ryan/powerline-shell/master/bash-powerline-screenshot.png)
 
 ```
-   $ git clone https://github.com/b-ryan/powerline-shell
-   $ cd powerline-shell
-   $ python setup.py install
+   git clone https://github.com/b-ryan/powerline-shell
+   cd powerline-shell
+   python setup.py install
 
 ```
 
@@ -84,9 +87,11 @@ Características agregadas:
 - .profile
 - .bash_profile
 
+
+
 ```
-    
-    # source $HOME/consoleX/main.sh
+   
+    source $HOME/consoleX/main.sh
 
 
 ```
