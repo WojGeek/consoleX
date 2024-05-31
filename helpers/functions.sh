@@ -18,8 +18,11 @@ detect_os() {
     DEB_TYPE='(Debian|Ubuntu|Mint|Parrot)'
     RPM_TYPE='(Fedora|OpenSuse|RedHat)'
     
-    OSNAME=$(grep -E '^(NAME)=' /etc/os-release)
+    #OSNAME=$(grep -E '^(NAME)=' /etc/os-release)
+    OSNAME=$(cat /proc/version)
+    
     OS_FOUND="OS Found:  $OSNAME, $ARCH"
+
     export OS_FOUND
     
     if [[ $OSNAME =~ $DEB_TYPE ]]; then
