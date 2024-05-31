@@ -31,9 +31,9 @@ set_prompt() {
     
  
     
-    if [  $prompt_enable == "false" ]; then
-        echo -e "\tThere was no success enabling the prompt "
-    fi
+    # if [  $prompt_enable == "false" ]; then
+    #     echo -e "\tThere was no success enabling the prompt "
+    # fi
     
 }
 
@@ -44,11 +44,13 @@ install_according_distro() {
         echo -e " - Install powerline for \"$OS_DERIVATES\" derivatives systems "
 
         if [ $OS_DERIVATES == "rpm" ]; then
-            install_package powerline powerline-fonts  # install powerline for Fedora
+            # install powerline for Fedora
+            install_package powerline powerline-fonts  powerline-gitstatus 
             #install_package powerline-fonts
         fi
         if [ $OS_DERIVATES == "deb" ]; then
-            install_package powerline fonts-powerline # install powerline for Debian
+            # install powerline for Debian/Ubuntu
+            install_package powerline fonts-powerline powerline-gitstatus
             #install_package fonts-powerline # install powerline for Debian
         fi
 
@@ -56,11 +58,18 @@ install_according_distro() {
 
 enable_powerline_prompt() {
 
-
+   if ! command -v powerline-daemon &> /dev/null 
+   then 
+    echo "- It require powerline-daemon but it's not installed.  Aborting."
+    install_according_distro
+    return
+   else
     powerline-daemon -q
     POWERLINE_BASH_CONTINUATION=1
     POWERLINE_BASH_SELECT=1
-    
+   fi
+
+
     
 }
 
@@ -107,7 +116,6 @@ prompt_main_startup () {
             # Accepted
             
             install_according_distro
-     
         fi
         
     fi
@@ -118,8 +126,9 @@ customize_shell_prompt() {
     #echo -e " - Customize the shell prompt"
     prompt_main_startup
     if [ "$pkg_found" == 1 ] ; then
-        enable_powerline_prompt
         set_prompt
+        enable_powerline_prompt
+       
     fi
     
 }

@@ -8,7 +8,7 @@
 install_package () {
     
     installed=0
-    local pkg=$@
+    pkg="$@"
     
     if [ -z "$1" ]
     then
@@ -28,7 +28,7 @@ install_package () {
     then
         
         #echo " - sudo yum install -y $pkg "
-        sudo yum install -y $pkg
+        sudo dnf install -y $pkg
         installed=0
         
     else

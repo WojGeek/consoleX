@@ -1,6 +1,4 @@
-
-
-#!/bin/sh
+#!/bin/bash
 
 enable_in_shell() {
     file=$1
@@ -20,4 +18,4 @@ enable_in_shell '.bash_profile'
 
 
 
-echo -e " - Open a new console!!"
+echo -e " - Restaure una nueva consola"
