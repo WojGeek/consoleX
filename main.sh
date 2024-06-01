@@ -14,13 +14,12 @@ main() {
 
     source "$HOME/consoleX/set_main-env.sh"
     
-    #require_helpers
     if  [  $prompt_enable ] ; then
         customize_shell_prompt
     fi
-    enable_alias_pkg_mgmt
     doyouwish_chrome
     announce_end_running
+    enable_alias_pkg_mgmt
     #  ❎
 }
 
