@@ -14,6 +14,7 @@ source $helpers/functions.sh
 source $helpers/alias.sh
 source $helpers/commands.sh
 source $helpers/prompt.sh
+source $helpers/chrome.sh
 
 
 # Editor vim
