@@ -10,29 +10,6 @@ enable_ux() {
 
 
 
-detect_os() {
-    
-    MACHINETYPE="$(uname -m)";
-    ARCH="${MACHINETYPE}";
-    
-    DEB_TYPE='(Debian|Ubuntu|Mint|Parrot)'
-    RPM_TYPE='(Fedora|OpenSuse|RedHat)'
-    
-    #OSNAME=$(grep -E '^(NAME)=' /etc/os-release)
-    OSNAME=$(cat /proc/version)
-    
-    OS_FOUND="OS Found:  $OSNAME, $ARCH"
-
-    export OS_FOUND
-    
-    if [[ $OSNAME =~ $DEB_TYPE ]]; then
-        OS_DERIVATES="deb"
-    fi
-    if [[ $OSNAME =~ $RPM_TYPE ]]; then
-        OS_DERIVATES="rpm"
-    fi
-}
-
 ChooseDistro() {
     detect_os
     echo -e " • $OS_FOUND"
