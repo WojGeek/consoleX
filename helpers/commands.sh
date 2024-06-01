@@ -109,3 +109,30 @@ pkg_query() {
 
     
 }
+
+confirm_installation() {
+    echo -e "\n"
+    PS3="Select the choice, please: "
+
+    pkg=$1
+    items=("Install the package: $1" )
+
+    while true; do
+        select item in "${items[@]}" "Continue without installing"
+        do
+            case $REPLY in                                                                       
+                1)                                                                               
+                   echo -e "\t - Complete next instructions to $item or CTRL-C to abort"                           
+                   return 1                                                                         
+                   ;;                                                                            
+                $((${#items[@]}+1)))                                                             
+                   echo "We're done!"                                                            
+                   break 2                                                                       
+                   ;;                                                                            
+                *) echo "Ooops - unknown choice $REPLY"                                          
+                break;;                                                                          
+            esac                                                                                 
+        done                                                                                     
+    done                                                                                         
+                                                                                                 
+}

@@ -73,32 +73,7 @@ enable_powerline_prompt() {
     
 }
 
-confirm_installation() {
-    echo -e "\n"
-    PS3="Select the choice, please: "
 
-    items=("Install the package" )
-    pkg=$1
-
-    while true; do
-        select item in "${items[@]}" "Continue"
-        do
-            case $REPLY in                                                                       
-                1)                                                                               
-                   echo -e "\t - Selected item #$REPLY which means $item: $pkg"                           
-                   return 1                                                                         
-                   ;;                                                                            
-                $((${#items[@]}+1)))                                                             
-                   echo "We're done!"                                                            
-                   break 2                                                                       
-                   ;;                                                                            
-                *) echo "Ooops - unknown choice $REPLY"                                          
-                break;;                                                                          
-            esac                                                                                 
-        done                                                                                     
-    done                                                                                         
-                                                                                                 
-}
 
 
 
