@@ -15,7 +15,8 @@ source $helpers/alias.sh
 source $helpers/commands.sh
 source $helpers/prompt.sh
 source $helpers/chrome.sh
-source $helpers/os.sh
+
+#source $helpers/os.sh
 
 # identify Operating system and package manager
 source $helpers/detect_os_pkgformat.sh
