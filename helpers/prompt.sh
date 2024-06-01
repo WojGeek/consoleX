@@ -4,51 +4,51 @@
 #  Activa el prompt basado en 'powerline'
 #
 
+. $console_environment
+
 
 set_prompt() {
     # Powerline prompt
 
-  
+    
     #echo -e " - Enable Powerline Prompt here"
 
-    detect_os
-    if [ "$OS_DERIVATES" == 'deb' ] ; then
+    
+    if [ "$PACKAGE_EXT" == 'deb' ] ; then
             if [ -f  "/usr/share/powerline/bindings/bash/powerline.sh" ]; then
                 source /usr/share/powerline/bindings/bash/powerline.sh
                 prompt_enable="true"
+                update_prompt_status
             else
                 prompt_enable="false"
+                update_prompt_status
             fi
-    elif [ "$OS_DERIVATES" == 'rpm' ] ; then
-        
-            
+    elif [ "$PACKAGE_EXT" == 'rpm' ] ; then
             source /usr/share/powerline/bash/powerline.sh
             prompt_enable="true"
+            update_prompt_status
+            
     else 
-         echo " - Check package installer for this platform: $1"
+         echo " - Unknown installer for this system: $1"
          prompt_enable="false"
+         update_prompt_status
+
     fi
     
- 
-    
-    # if [  $prompt_enable == "false" ]; then
-    #     echo -e "\tThere was no success enabling the prompt "
-    # fi
     
 }
 
 install_according_distro() {
 
-        detect_os
 
-        echo -e " - Install powerline for \"$OS_DERIVATES\" derivatives systems "
+        echo -e " - Install powerline for \"$PACKAGE_EXT\" derivatives systems "
 
-        if [ $OS_DERIVATES == "rpm" ]; then
+        if [ $PACKAGE_EXT == "rpm" ]; then
             # install powerline for Fedora
-            install_package powerline powerline-fonts  powerline-gitstatus 
+            install_package powerline powerline-fonts  
             #install_package powerline-fonts
         fi
-        if [ $OS_DERIVATES == "deb" ]; then
+        if [ $PACKAGE_EXT == "deb" ]; then
             # install powerline for Debian/Ubuntu
             install_package powerline fonts-powerline powerline-gitstatus
             #install_package fonts-powerline # install powerline for Debian
@@ -99,11 +99,11 @@ prompt_main_startup () {
 
 customize_shell_prompt() {
     #echo -e " - Customize the shell prompt"
+    prompt_enable=""
     prompt_main_startup
     if [ "$pkg_found" == 1 ] ; then
         set_prompt
         enable_powerline_prompt
-       
     fi
     
 }

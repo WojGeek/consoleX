@@ -12,23 +12,23 @@ install_package () {
     
     if [ -z "$1" ]
     then
-        echo " - install_package: no hay argumentos"
-        return
+        echo " - install_package: none arguments given"
+        exit 1
     fi
     
-    detect_os
-    if [ "$OS_DERIVATES" == 'deb' ]
+
+    if [ "$PACKAGE_EXT" == 'deb' ]
     then
         
-        #echo -e "\t *** sudo apt install -y  $pkg "
-        sudo apt install  $pkg 2>&1
+        #sudo apt install  $pkg 2>&1
+        sudo $PACKAGE_MGR install  $pkg 2>&1
         installed=1
         
-    elif [ "$OS_DERIVATES" == 'rpm' ]
+    elif [ "$PACKAGE_EXT" == 'rpm' ]
     then
         
-        #echo " - sudo yum install -y $pkg "
-        sudo dnf install -y $pkg
+        #sudo dnf install -y $pkg
+        sudo $PACKAGE_MGR install -y $pkg
         installed=0
         
     else
@@ -57,15 +57,14 @@ pkg_query() {
         return
     fi
     
-    detect_os
-    if [ "$OS_DERIVATES" == 'deb' ] ; then
+    if [ "$PACKAGE_EXT" == 'deb' ] ; then
         
         status="$(dpkg-query -W --showformat='${db:Status-Status}' "$pkg" 2>/dev/null)"
 
         # Status for DEB packages not installed
         in_case_not_found_pkg=$deb_status
         
-    elif [ "$OS_DERIVATES" == 'rpm' ] ; then
+    elif [ "$PACKAGE_EXT" == 'rpm' ] ; then
         
         status="$(rpm -q  "$pkg" 2>/dev/null)"
         
@@ -79,14 +78,13 @@ pkg_query() {
     
    
 
-    echo -e "- pkg_query: $status"
     if [[  "$status" =~ $in_case_not_found_pkg  ]] ; then
             # package status 
 
        
             pkg_found=0
             query="Failure"
-          
+            echo -e "pkg_query: $status ❎"
 
         else
 
@@ -94,17 +92,15 @@ pkg_query() {
             pkg_found=1
             query="Success"
           
+            echo -e "pkg_query: $status ✅"
 
     fi
 
  
  
             
-    echo -e "  pkg_found: $pkg_found, pkg_type: $OS_DERIVATES, query: $query"
+    echo -e "  pkg_found: $pkg_found, pkg_type: $PACKAGE_EXT, query: $query"
     
-    # TODO: remover , status: $in_case_not_found_pkg    "
-    
- 
     unset $pkg
 
     
@@ -122,8 +118,8 @@ confirm_installation() {
         do
             case $REPLY in                                                                       
                 1)                                                                               
-                   echo -e "\t - Complete next instructions to $item or CTRL-C to abort"                           
-                   return 1                                                                         
+                   echo -e "\n Complete next instructions to $item or CTRL-C to abort"                           
+                   return 1                                                                    
                    ;;                                                                            
                 $((${#items[@]}+1)))                                                             
                    echo "We're done!"                                                            
