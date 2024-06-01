@@ -1,11 +1,15 @@
-#!/bin/sh
+#!/bin/bash
 
 # ruta del clone git
 CLONEDAPP_DIR="$HOME/consoleX"       ##  DO NOT CHANGE
 
-# Components
-helpers=$CLONEDAPP_DIR/helpers.sh
-source $CLONEDAPP_DIR/helpers.sh
+load_helpers() {
+    # Components
+    helpers=$CLONEDAPP_DIR/helpers.sh
+    source $CLONEDAPP_DIR/helpers.sh
+
+}
+
 
 # target dir  
 SYSTEMDIRECTORY="/opt"
@@ -37,11 +41,11 @@ source $ENVIRONMENT
 IS_DEVELOPING=1
 
 
-
-
-
 announce_end_running() {
     if [ ! $prompt_enable ] ; then
         echo -e "\nPlease close and re-open your console, to watch effects.\n"
     fi 
 }
+
+echo -e "Main environment loaded ✅"
+load_helpers
