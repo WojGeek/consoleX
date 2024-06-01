@@ -19,3 +19,5 @@ source $helpers/chrome.sh
 
 # Editor vim
 #source $helpers/vim.sh
+
+echo "Helpers loaded ✅"
