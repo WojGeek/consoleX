@@ -74,4 +74,4 @@ else
     echo "PACKAGE_EXT=$PACKAGE_EXT" >> console.env
 fi
 
-echo -e "Identify OS and package format ✅"
+echo -e "OS and package format: $OS-$VER ($PACKAGE_EXT) ✅"

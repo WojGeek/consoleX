@@ -60,16 +60,21 @@ enable_powerline_prompt() {
 
    if ! command -v powerline-daemon &> /dev/null 
    then 
-    echo "- It require powerline-daemon but it's not installed.  Aborting."
-    install_according_distro
-    return
+       echo "Powerline-daemon is required but it is not installed"
+
+       confirm_installation $pkg
+        if [ $? -eq 1 ] ; then
+            # Accepted
+            
+            install_according_distro
+        fi
+        
+        
    else
-    powerline-daemon -q
-    POWERLINE_BASH_CONTINUATION=1
-    POWERLINE_BASH_SELECT=1
+        powerline-daemon -q
+        POWERLINE_BASH_CONTINUATION=1
+        POWERLINE_BASH_SELECT=1
    fi
-
-
     
 }
 
