@@ -84,7 +84,7 @@ pkg_query() {
        
             pkg_found=0
             query="Failure"
-            echo -e "pkg_query: $status ❎"
+            echo -e "pkg_query: $pkg $status ❎"
 
         else
 
@@ -92,7 +92,7 @@ pkg_query() {
             pkg_found=1
             query="Success"
           
-            echo -e "pkg_query: $status ✅"
+            echo -e "pkg_query: $pkg $status ✅"
 
     fi
 
