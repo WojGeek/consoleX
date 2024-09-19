@@ -6,10 +6,9 @@
 
 # ChangesLogs
 #	19.09.2024	- Rocky Linux added at OS list
-#			- set  path for console.env'
 
 # console env path
-OSENVPATH="$CLONEDAPP_DIR/console.env"
+#ENVIRONMENT="$CLONEDAPP_DIR/console.env"
 
 # Detectar el sistema operativo
 if [ -f /etc/os-release ]; then
@@ -58,28 +57,28 @@ esac
 
 
 
-if grep -q "^OS=" $OSENVPATH; then
-    sed -i "s/OS=.*/OS=$OS/" $OSENVPATH
+if grep -q "^OS=" $ENVIRONMENT; then
+    sed -i "s/OS=.*/OS=$OS/" $ENVIRONMENT
 else
-    echo "OS=$OS" >> $OSENVPATH
+    echo "OS=$OS" >> $ENVIRONMENT
 fi
 
-if grep -q "^VER=" $OSENVPATH; then
-    sed -i "s/VER=.*/VER=$VER/" $OSENVPATH
+if grep -q "^VER=" $ENVIRONMENT; then
+    sed -i "s/VER=.*/VER=$VER/" $ENVIRONMENT
 else
-    echo "VER=$VER" >> $OSENVPATH
+    echo "VER=$VER" >> $ENVIRONMENT
 fi
 
-if grep -q "^PACKAGE_MGR=" $OSENVPATH; then
-    sed -i "s/PACKAGE_MGR=.*/PACKAGE_MGR=$PACKAGE_MGR/" $OSENVPATH
+if grep -q "^PACKAGE_MGR=" $ENVIRONMENT; then
+    sed -i "s/PACKAGE_MGR=.*/PACKAGE_MGR=$PACKAGE_MGR/" $ENVIRONMENT
 else
-    echo "PACKAGE_MGR=$PACKAGE_MGR" >> $OSENVPATH
+    echo "PACKAGE_MGR=$PACKAGE_MGR" >> $ENVIRONMENT
 fi
 
-if grep -q "^PACKAGE_EXT=" $OSENVPATH; then
-    sed -i "s/PACKAGE_EXT=.*/PACKAGE_EXT=$PACKAGE_EXT/" $OSENVPATH
+if grep -q "^PACKAGE_EXT=" $ENVIRONMENT; then
+    sed -i "s/PACKAGE_EXT=.*/PACKAGE_EXT=$PACKAGE_EXT/" $ENVIRONMENT
 else
-    echo "PACKAGE_EXT=$PACKAGE_EXT" >> $OSENVPATH
+    echo "PACKAGE_EXT=$PACKAGE_EXT" >> $ENVIRONMENT
 fi
 
 echo -e "OS and package format: $OS-$VER ($PACKAGE_EXT) ✅"
