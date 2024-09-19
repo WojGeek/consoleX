@@ -3,6 +3,14 @@
 # Identify operating system as well the package manager
 #  1.06.20.2024, 14h06
 
+
+# ChangesLogs
+#	19.09.2024	- Rocky Linux added at OS list
+#			- set  path for console.env'
+
+# console env path
+OSENVPATH="$CLONEDAPP_DIR/console.env"
+
 # Detectar el sistema operativo
 if [ -f /etc/os-release ]; then
     . /etc/os-release
@@ -25,11 +33,11 @@ fi
 
 # Determinar el gestor de paquetes
 case "$OS" in
-    debian|ubuntu|linuxmint|parrotos)
+    debian|ubuntu|linuxmint|parrots)
         PACKAGE_MGR="apt"
         PACKAGE_EXT="deb"
         ;;
-    fedora|rhel|centos)
+    fedora|rhel|centos|rocky)
         if command -v yum &> /dev/null; then
             PACKAGE_MGR="yum"
             PACKAGE_EXT="rpm"
@@ -50,28 +58,28 @@ esac
 
 
 
-if grep -q "^OS=" console.env; then
-    sed -i "s/OS=.*/OS=$OS/" console.env
+if grep -q "^OS=" $OSENVPATH; then
+    sed -i "s/OS=.*/OS=$OS/" $OSENVPATH
 else
-    echo "OS=$OS" >> console.env
+    echo "OS=$OS" >> $OSENVPATH
 fi
 
-if grep -q "^VER=" console.env; then
-    sed -i "s/VER=.*/VER=$VER/" console.env
+if grep -q "^VER=" $OSENVPATH; then
+    sed -i "s/VER=.*/VER=$VER/" $OSENVPATH
 else
-    echo "VER=$VER" >> console.env
+    echo "VER=$VER" >> $OSENVPATH
 fi
 
-if grep -q "^PACKAGE_MGR=" console.env; then
-    sed -i "s/PACKAGE_MGR=.*/PACKAGE_MGR=$PACKAGE_MGR/" console.env
+if grep -q "^PACKAGE_MGR=" $OSENVPATH; then
+    sed -i "s/PACKAGE_MGR=.*/PACKAGE_MGR=$PACKAGE_MGR/" $OSENVPATH
 else
-    echo "PACKAGE_MGR=$PACKAGE_MGR" >> console.env
+    echo "PACKAGE_MGR=$PACKAGE_MGR" >> $OSENVPATH
 fi
 
-if grep -q "^PACKAGE_EXT=" console.env; then
-    sed -i "s/PACKAGE_EXT=.*/PACKAGE_EXT=$PACKAGE_EXT/" console.env
+if grep -q "^PACKAGE_EXT=" $OSENVPATH; then
+    sed -i "s/PACKAGE_EXT=.*/PACKAGE_EXT=$PACKAGE_EXT/" $OSENVPATH
 else
-    echo "PACKAGE_EXT=$PACKAGE_EXT" >> console.env
+    echo "PACKAGE_EXT=$PACKAGE_EXT" >> $OSENVPATH
 fi
 
 echo -e "OS and package format: $OS-$VER ($PACKAGE_EXT) ✅"
