@@ -4,7 +4,7 @@
 #  Activa el prompt basado en 'powerline'
 #
 
-. $console_environment
+source $ENVIRONMENT
 
 
 set_prompt() {
