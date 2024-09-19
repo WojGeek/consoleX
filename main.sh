@@ -17,10 +17,8 @@ main() {
     if  [  $prompt_enable ] ; then
         customize_shell_prompt
     fi
-    doyouwish_chrome
     announce_end_running
-    enable_alias_pkg_mgmt
-    #  ❎
+    
 }
 
 main
