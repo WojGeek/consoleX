@@ -1,15 +1,15 @@
 #!/bin/bash
 
 
-# cloned app pathfiles
+# Main pathfiles like has been cloned
 CLONEDAPP_DIR="$HOME/consoleX"       		## For the sake of this app, please don't change it.
+
+helpers=$CLONEDAPP_DIR/helpers.sh		# Components
 
 ENVIRONMENT="$CLONEDAPP_DIR/console.env"  	## For the sake of this app, please don't change it.
 source $ENVIRONMENT
 
 load_helpers() {
-    # Components
-    helpers=$CLONEDAPP_DIR/helpers.sh
     source $CLONEDAPP_DIR/helpers.sh
 
 }
@@ -43,7 +43,7 @@ announce_end_running() {
     fi 
 }
 
-echo -e "Main components loaded ✅"
+echo -e "✅ Helpers/Components"
 load_helpers
 
 
@@ -58,7 +58,7 @@ update_prompt_status() {
     fi
 }
 
+echo -e "✅ Environment updated"
 update_prompt_status
 source $ENVIRONMENT
-
 
