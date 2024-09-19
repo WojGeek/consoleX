@@ -7,8 +7,6 @@
 # ChangesLogs
 #	19.09.2024	- Rocky Linux added at OS list
 
-# console env path
-#ENVIRONMENT="$CLONEDAPP_DIR/console.env"
 
 # Detectar el sistema operativo
 if [ -f /etc/os-release ]; then
@@ -81,4 +79,4 @@ else
     echo "PACKAGE_EXT=$PACKAGE_EXT" >> $ENVIRONMENT
 fi
 
-echo -e "OS and package format: $OS-$VER ($PACKAGE_EXT) ✅"
+echo -e "✅ OS/Package identified: $OS-$VER/$PACKAGE_EXT"
