@@ -9,3 +9,4 @@ show_info() {
         echo -e " • Status: En desarrollo"
     fi
 }
+
