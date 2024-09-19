@@ -13,12 +13,12 @@
 main() {
 
     source "$HOME/consoleX/set_main-env.sh"
-    
-    if  [  $prompt_enable ] ; then
+
+    if  [  "$prompt_enable" == 'true' ] ; then
         customize_shell_prompt
     fi
     announce_end_running
-    
+
 }
 
 main
