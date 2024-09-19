@@ -43,7 +43,6 @@ announce_end_running() {
     fi 
 }
 
-echo -e "✅ Helpers/Components"
 load_helpers
 
 
