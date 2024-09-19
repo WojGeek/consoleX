@@ -67,6 +67,8 @@ sdrlo() {
 }
 
 # Llamar a la función de ayuda si no se pasan argumentos
-if [ "$#" -eq 0 ]; then
-    help_systemd_cmds
-fi
+#if [ "$#" -eq 0 ]; then
+#    helpsystemd
+#fi
+
+echo -e "✅ Systemd aliases"
