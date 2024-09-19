@@ -15,4 +15,3 @@ alias aptinf='apt show'                 # Mostrar información de un paquete
 alias aptlst='apt list --installed'      # Listar paquetes instalados
 alias aptcle='sudo apt clean'            # Limpiar caché de paquetes
 
-echo "Alias para apt configurados."
