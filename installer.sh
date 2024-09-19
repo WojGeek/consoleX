@@ -14,8 +14,18 @@ enable_in_shell() {
 
 enable_in_shell '.bashrc'
 enable_in_shell '.profile'
-enable_in_shell '.bash_profile'
 
+# Activar para conexiones SSH  
+LINE='if [ -f ~/.bashrc ]; then source ~/.bashrc; fi'
 
+# Verifica si la línea ya existe en .bash_profile
+if ! grep -Fxq "$LINE" ~/.bash_profile; then
+    # Si no existe, la añade al final del archivo
+    echo "$LINE" >> ~/.bash_profile
+    echo "Línea añadida a .bash_profile."
+else
+    echo "La línea ya existe en .bash_profile."
+fi
 
-echo -e " - Restaure una nueva consola"
+echo -e " Re-open console to apply changes! "
+echo -e " ☕ Have a great day ☘"
