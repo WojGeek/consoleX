@@ -6,7 +6,12 @@
 
 # ChangesLogs
 #	19.09.2024	- Rocky Linux added at OS list
-
+if verify_file "$ENVIRONMENT"; then
+       ok "Environment file"
+    else
+       show_message_with_prefix 
+      # "Environment file not found!"
+fi
 
 # Detectar el sistema operativo
 if [ -f /etc/os-release ]; then
@@ -55,28 +60,29 @@ esac
 
 
 
-if grep -q "^OS=" $ENVIRONMENT; then
-    sed -i "s/OS=.*/OS=$OS/" $ENVIRONMENT
+if grep -q "^OS=" "$ENVIRONMENT"; then
+    sed -i "s/OS=.*/OS=$OS/" "$ENVIRONMENT"
 else
-    echo "OS=$OS" >> $ENVIRONMENT
+    echo "OS=$OS" >> "$ENVIRONMENT"
 fi
 
-if grep -q "^VER=" $ENVIRONMENT; then
-    sed -i "s/VER=.*/VER=$VER/" $ENVIRONMENT
+if grep -q "^VER=" "$ENVIRONMENT"; then
+    sed -i "s/VER=.*/VER=$VER/" "$ENVIRONMENT"
 else
-    echo "VER=$VER" >> $ENVIRONMENT
+    echo "VER=$VER" >> "$ENVIRONMENT"
 fi
 
-if grep -q "^PACKAGE_MGR=" $ENVIRONMENT; then
-    sed -i "s/PACKAGE_MGR=.*/PACKAGE_MGR=$PACKAGE_MGR/" $ENVIRONMENT
+if grep -q "^PACKAGE_MGR=" "$ENVIRONMENT"; then
+    sed -i "s/PACKAGE_MGR=.*/PACKAGE_MGR=$PACKAGE_MGR/" "$ENVIRONMENT"
 else
-    echo "PACKAGE_MGR=$PACKAGE_MGR" >> $ENVIRONMENT
+    echo "PACKAGE_MGR=$PACKAGE_MGR" >> "$ENVIRONMENT"
 fi
 
-if grep -q "^PACKAGE_EXT=" $ENVIRONMENT; then
-    sed -i "s/PACKAGE_EXT=.*/PACKAGE_EXT=$PACKAGE_EXT/" $ENVIRONMENT
+if grep -q "^PACKAGE_EXT=" "$ENVIRONMENT"; then
+    sed -i "s/PACKAGE_EXT=.*/PACKAGE_EXT=$PACKAGE_EXT/" "$ENVIRONMENT"
 else
-    echo "PACKAGE_EXT=$PACKAGE_EXT" >> $ENVIRONMENT
+    echo "PACKAGE_EXT=$PACKAGE_EXT" >> "$ENVIRONMENT"
 fi
 
 echo -e "✅ OS/Package identified: $OS-$VER/$PACKAGE_EXT"
+

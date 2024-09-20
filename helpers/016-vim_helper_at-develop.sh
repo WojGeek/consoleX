@@ -11,9 +11,9 @@ enable_vimrc() {
     if [ -f ~/.vimrc ]; then
         echo -e " - .vimrc: OK"
     else
-        if [ -f $CLONEDAPP_DIR/rc/vimrc ]; then
+        if [ -f $APPDIR/rc/vimrc ]; then
             
-            ln -s $CLONEDAPP_DIR/rc/vimrc ~/.vimrc
+            ln -s $APPDIR/rc/vimrc ~/.vimrc
             echo -e " - Linked .vimrc: done"
         else
             echo -e " - .vimrc: not found!"

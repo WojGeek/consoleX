@@ -53,7 +53,8 @@ pkg_query() {
     if [ -z "$pkg" ]
     # [  -z "$pkg" ] ||  
     then
-        echo " - pkg_query: no arguments given for query"
+        show_message " - pkg_query: no arguments given for query"
+        #echo " - pkg_query: no arguments given for query"
         return
     fi
     
@@ -80,7 +81,6 @@ pkg_query() {
 
     if [[  "$status" =~ $in_case_not_found_pkg  ]] ; then
             # package status 
-
        
             pkg_found=0
             query="Failure"
@@ -92,14 +92,13 @@ pkg_query() {
             pkg_found=1
             query="Success"
           
-            echo -e "pkg_query: $pkg $status ✅"
+            #echo -e "pkg_query: $pkg $status ✅"
+            #show_message_with_prefix "$pkg $status "
+            ok  "$pkg $status "
 
     fi
-
- 
- 
-            
-    echo -e "  pkg_found: $pkg_found, pkg_type: $PACKAGE_EXT, query: $query"
+                
+    ok "  pkg_found: $pkg_found, pkg_type: $PACKAGE_EXT, query: $query"
     
     unset $pkg
 
