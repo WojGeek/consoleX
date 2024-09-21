@@ -12,10 +12,11 @@
 APPDIR="$HOME/consoleX"			# applicacion main directory
 
 
+# Functions library directory
+HELPERS="$APPDIR/helpers"	
 
-HELPERS="$APPDIR/helpers"		# specific purpose functions
-ENVIRONMENT="$APPDIR/console.env"  	#  Environment file
-
+#  Environment file
+ENVIRONMENT="$APPDIR/console.env"  	
 
 # future upgrade
 COMPONENTS="$APPDIR/components"
