@@ -25,9 +25,9 @@ debug_message() {
 
     # Comprueba si hay variables adicionales
     if [ "$#" -gt 0 ]; then
-        echo -e "[DEBUG] [${timestamp}] 🔔 ${message} | Variables: $@"  # Muestra el mensaje y las variables pasadas
+        echo -e "🔔  [DEBUG] [${timestamp}] 🔔 ${message} | Variables: $@"  # Muestra el mensaje y las variables pasadas
     else
-        echo -e "[DEBUG] [${timestamp}] 🔔 ${message} | Sin variables adicionales."  # Mensaje sin variables
+        echo -e "🔔  [DEBUG] [${timestamp}] 🔔 ${message} | Sin variables adicionales."  # Mensaje sin variables
     fi
 }
 
