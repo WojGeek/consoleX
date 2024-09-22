@@ -71,4 +71,4 @@ sdrlo() {
 #    helpsystemd
 #fi
 
-ok "Systemd aliases -  (helpsystemd)"
+check_ok "Systemd aliases -  (helpsystemd)"

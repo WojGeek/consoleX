@@ -32,13 +32,13 @@ fi
 
 function main() {
 
-    if  [  "$prompt_enable" == 'true' ] ; then
-        customize_shell_prompt
-    fi
-
+    #if  [  "$prompt_enable" == 'true' ] ; then
+    #    customize_shell_prompt
+    #fi
+    
+    e "Have a fun console 💪🏻✨"
 
 }
 
 # let's start the game!
 main "$@"
-e "Have a fun console 💪🏻✨"
