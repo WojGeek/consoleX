@@ -54,11 +54,11 @@ fi
 
 # Determine the package manager and extension based on the OS detected
 case "$OS" in
-    debian|ubuntu|linuxmint|parrots)
+    debian|ubuntu|linuxmint|parrots|kali)
         PACKAGE_MGR="apt"
         PACKAGE_EXT="deb"
         ;;
-    fedora|rhel|centos|rocky)
+    fedora|rhel|centos|rocky|bazzite|almalinux|rockylinux|alma)
         if command -v dnf &> /dev/null; then
             PACKAGE_MGR="dnf"
             PACKAGE_EXT="rpm"
@@ -93,12 +93,13 @@ fi
 identify_os_and_version
 
 # Output the identified OS and package manager information
-checked " System/Package format: $OS/$PACKAGE_EXT"
+#checked " System/Package format: $OS/$PACKAGE_EXT"
 
 # Update the environment variables in the environment file
 update_environment_variable "OS" "$OS"
 update_environment_variable "VER" "$VER"
 update_environment_variable "PACKAGE_MGR" "$PACKAGE_MGR"
 update_environment_variable "PACKAGE_EXT" "$PACKAGE_EXT"
-about_this "$OS, $PACKAGE_MGR, $PACKAGE_EXT " 
+# about_this "OS: $OS, Installer: $PACKAGE_MGR, pkg: $PACKAGE_EXT " 
+checked "OS: $OS, Installer: $PACKAGE_MGR, pkg: $PACKAGE_EXT " 
 

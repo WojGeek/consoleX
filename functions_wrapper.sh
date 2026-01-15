@@ -12,7 +12,7 @@ source $HELPERS/010-messages-1.0.0_helper.sh
 for helper in $HELPERS/*_helper.sh; do
     # uncomment to debug
     #echo -e "file: $helper"
-    check_ok $helper
+    #check_ok $helper
    
     source "$helper"
 	

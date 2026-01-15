@@ -57,7 +57,7 @@ help-mydocker() {
     echo "  my-docker-help     Muestra esta ayuda."
 }
 
-about_this "Shortcuts to Docker shortcuts, run: help-mydocker"
+about_this "Docker shortcuts, run: help-mydocker"
 
 # Fin del script
 

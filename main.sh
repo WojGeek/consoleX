@@ -36,7 +36,7 @@ function main() {
     #    customize_shell_prompt
     #fi
 
-    echo 'Happy day!'
+    echo 'Conquest the console, coder!'
 
 }
 
